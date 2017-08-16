@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Surveys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Language</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+        <td><%= survey.location %></td>
+        <td><%= survey.language %></td>
+        <td><%= survey.comment %></td>
+        <td><%= link_to 'Show', survey %></td>
+        <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
+        <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Create Survey</h1>
+
+<form action="/surveys/create" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <label>Name:</label>
+  <input type="text" name="survey[name]" placeholder="Name">
+  <label>Location:</label>
+  <select name="survey[location]">
+    <option value="dallas">Dallas</option>
+    <option value="san_jose">San Jose</option>
+    <option value="la">L.A.</option>
+  </select>
+  <label>Language:</label>
+  <select name="survey[language]">
+    <option value="python">Python</option>
+    <option value="c++">C++</option>
+    <option value="klingon">Klingon</option>
+  </select>
+  <textarea name="survey[comment]"></textarea>
+
+
+  <input type="submit" value="Submit">
+</form>
+
+<%= link_to 'New Survey', new_survey_path %>

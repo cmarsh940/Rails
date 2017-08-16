@@ -1,0 +1,18 @@
+<h1>New Dojo</h1>
+
+<%= simple_form_for(@dojo) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :branch %>
+    <%= f.input :street %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', dojos_path %>
